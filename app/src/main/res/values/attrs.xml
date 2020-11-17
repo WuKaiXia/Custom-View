@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PieView">
+        <attr name="radius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="AvatarView">
+        <attr name="src" format="reference" />
+        <attr name="avatar_divide_width" format="dimension" />
+    </declare-styleable>
+</resources>
