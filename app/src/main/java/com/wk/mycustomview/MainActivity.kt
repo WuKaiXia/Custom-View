@@ -1,5 +1,6 @@
 package com.wk.mycustomview
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
@@ -13,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val pieView = findViewById<AvatarView>(R.id.pieView)
         findViewById<TextView>(R.id.tvSwitchPie).setOnClickListener {
+            startActivity(Intent(this,XfermodeActivity::class.java))
 //            pieView.switchPie()
             id = if (id == R.drawable.bg_rain) {
                 R.drawable.test
