@@ -1,39 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical"
+    android:fillViewport="true"
     tools:context=".MainActivity">
 
-    <com.wk.mycustomview.widget.xfermode.ScratchCardView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:background="@color/teal_200"
-        android:layout_height="225dp" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <com.wk.mycustomview.widget.AvatarView
-        android:id="@+id/pieView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_margin="10dp"
-        app:avatar_divide_width="5dp"
-        app:src="@drawable/bg_rain" />
+        <com.wk.mycustomview.widget.canvas.CanvasView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/tvSwitchPie"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        <com.wk.mycustomview.widget.canvas.CanvasView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            app:cv_scale="0.5" />
 
-        android:background="@color/design_default_color_secondary"
-        android:gravity="center"
-        android:text="switch pie"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
+        <com.wk.mycustomview.widget.canvas.CanvasView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="30dp"
+            app:cv_scale="2" />
 
-    <com.wk.mycustomview.widget.DashboardView
-        android:id="@+id/dashboardView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        <com.wk.mycustomview.widget.canvas.CanvasView
+            android:id="@+id/cvView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="30dp"
+            app:cv_scale="1" />
+
+        <com.wk.mycustomview.widget.DashboardView
+            android:id="@+id/dashboardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.wk.mycustomview.widget.xfermode.ScratchCardView
+            android:layout_width="match_parent"
+            android:layout_height="225dp"
+            android:background="@color/teal_200" />
+
+        <com.wk.mycustomview.widget.AvatarView
+            android:id="@+id/pieView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            app:avatar_divide_width="5dp"
+            app:src="@drawable/bg_rain" />
+
+        <TextView
+            android:id="@+id/tvSwitchPie"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@color/design_default_color_secondary"
+            android:gravity="center"
+            android:text="switch pie"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </LinearLayout>
+</ScrollView>

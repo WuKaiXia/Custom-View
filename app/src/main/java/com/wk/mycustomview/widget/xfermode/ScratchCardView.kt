@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import com.wk.mycustomview.R
+import com.wk.mycustomview.utils.BitmapUtils.zoomBitmap
 
 
 class ScratchCardView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
@@ -64,8 +65,9 @@ class ScratchCardView(context: Context, attrs: AttributeSet?) : View(context, at
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        mBmpText = zoomBitmap(resourceToBitmap(R.drawable.scratch_card_text, mBmpText))
-        mBmpSrc = zoomBitmap(resourceToBitmap(R.drawable.scratch, mBmpSrc))
+        mBmpText =
+            zoomBitmap(resourceToBitmap(R.drawable.scratch_card_text, mBmpText), width, height)
+        mBmpSrc = zoomBitmap(resourceToBitmap(R.drawable.scratch, mBmpSrc), width, height)
         mBmpDst = Bitmap.createBitmap(
             width,
             height,
@@ -146,15 +148,5 @@ class ScratchCardView(context: Context, attrs: AttributeSet?) : View(context, at
         val bitmap = BitmapFactory.decodeResource(resources, srcId, options)
         tempBitmap?.recycle()
         return bitmap
-    }
-
-    private fun zoomBitmap(srcBitmap: Bitmap?): Bitmap? {
-        if (srcBitmap == null) return null
-        val bitmapWidth = srcBitmap.width
-        val bitmapHeight = srcBitmap.height
-        val matrix = Matrix()
-        matrix.postScale(width / bitmapWidth.toFloat(), height / bitmapHeight.toFloat())
-
-        return Bitmap.createBitmap(srcBitmap, 0, 0, bitmapWidth, bitmapHeight, matrix, true)
     }
 }

@@ -42,6 +42,11 @@ class DashboardView(context: Context?, attrs: AttributeSet?) : View(context, att
     private var animator: ObjectAnimator? = null
     private lateinit var pathEffect: PathDashPathEffect
 
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        setMeasuredDimension((RADIUS * 2 + 50).toInt(), (RADIUS * 2 + 50).toInt())
+    }
+
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
         path.reset()
