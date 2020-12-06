@@ -7,12 +7,15 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewConfiguration
 import com.wk.mycustomview.R
 import com.wk.mycustomview.utils.BitmapUtils.zoomBitmap
+import kotlin.math.abs
 
 
 class ScratchCardView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
 
+    private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
     private val xfermode by lazy { PorterDuffXfermode(PorterDuff.Mode.SRC_OUT) }
     private val mBitmapPaint by lazy {
         Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -109,6 +112,9 @@ class ScratchCardView(context: Context, attrs: AttributeSet?) : View(context, at
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
+        if (!isCompleted) {
+            parent?.requestDisallowInterceptTouchEvent(true)
+        }
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 mPreX = event.x
