@@ -61,31 +61,31 @@ class SportView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
         )
 
 
-        // 适合动态文字居中
-        paint.getFontMetrics(fontMetrics)
-        paint.color = Color.RED
-        canvas.drawText(
-            sportText,
-            width / 2f,
-            height / 2f - (fontMetrics.ascent + fontMetrics.descent) / 2f,
-            paint
-        )
-
-        // 文字左侧贴边
-        paint.textAlign = Paint.Align.LEFT
-        canvas.drawText(
-            sportText,
-            -bounds.left.toFloat(),
-            0f,
-            paint
-        )
-
-        // 文字顶部贴边，bounds.top:完全贴边；fontMetrics.top: 文字间有间隙，适合阅读类文本
-        canvas.drawText(
-            sportText,
-            -bounds.left.toFloat(),
-            -bounds.top.toFloat(),
-            paint
-        )
+//        // 适合动态文字居中
+//        paint.getFontMetrics(fontMetrics)
+//        paint.color = Color.RED
+//        canvas.drawText(
+//            sportText,
+//            width / 2f,
+//            height / 2f - (fontMetrics.ascent + fontMetrics.descent) / 2f,
+//            paint
+//        )
+//
+//        // 文字左侧贴边
+//        paint.textAlign = Paint.Align.LEFT
+//        canvas.drawText(
+//            sportText,
+//            -bounds.left.toFloat(),
+//            0f,
+//            paint
+//        )
+//
+//        // 文字顶部贴边，bounds.top:完全贴边；fontMetrics.top: 文字间有间隙，适合阅读类文本
+//        canvas.drawText(
+//            sportText,
+//            -bounds.left.toFloat(),
+//            -bounds.top.toFloat(),
+//            paint
+//        )
     }
 }

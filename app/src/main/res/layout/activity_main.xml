@@ -13,9 +13,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <com.wk.mycustomview.widget.text.MultiLineTextView
+            android:layout_width="wrap_content"
+            android:layout_height="335dp" />
+
         <com.wk.mycustomview.widget.text.SportView
             android:layout_width="match_parent"
-            android:layout_height="500dp" />
+            android:layout_height="305dp" />
 
         <com.wk.mycustomview.widget.canvas.CanvasView
             android:layout_width="wrap_content"
