@@ -10,6 +10,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import com.wk.mycustomview.AnimatorFieldDelegate
 import com.wk.mycustomview.px
 
 class CircleView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
@@ -20,16 +21,9 @@ class CircleView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
         }
     }
     var animator: AnimatorSet? = null
-    var color = Color.RED
-        set(value) {
-            field = value
-            invalidate()
-        }
-    var radius = 50f.px
-        set(value) {
-            field = value
-            invalidate()
-        }
+    var color: Int by AnimatorFieldDelegate(Color.RED)
+
+    var radius: Float by AnimatorFieldDelegate(50f.px)
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
@@ -67,7 +61,7 @@ class CircleView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
             it.setFloatValues(endValue)
         }
 
-        animator?.playTogether(colorAnimator,radiusAnimator)
+        animator?.playTogether(colorAnimator, radiusAnimator)
         animator?.start()
     }
 
