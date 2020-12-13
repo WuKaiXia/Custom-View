@@ -6,15 +6,19 @@ import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.PointF
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import androidx.core.animation.doOnRepeat
 import com.wk.mycustomview.widget.AvatarView
 import com.wk.mycustomview.widget.PieView
 import com.wk.mycustomview.widget.animate.AnimateUtil
 import com.wk.mycustomview.widget.animate.CircleView
+import com.wk.mycustomview.widget.animate.PointFEvaluator
 import com.wk.mycustomview.widget.canvas.CanvasView
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private var id = R.drawable.bg_rain
@@ -53,10 +57,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         animatorTest()
+
+        val evaluator = PointFEvaluator()
+        val pointAnimator =
+            ObjectAnimator.ofObject(pointF, "pointF", evaluator, PointF(200f.px, 35f.px))
+        pointAnimator.run {
+            duration = 5000
+            repeatMode()
+            start()
+        }
     }
 
     fun animatorTest() {
         val cvAnimator = findViewById<CircleView>(R.id.cvAnimator)
-        cvAnimator.startAnimation(150f.px, Color.BLUE)
+        cvAnimator.startAnimation(100f.px, Color.BLUE)
     }
 }

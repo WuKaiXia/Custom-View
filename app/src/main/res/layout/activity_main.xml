@@ -16,7 +16,18 @@
         <com.wk.mycustomview.widget.animate.CircleView
             android:id="@+id/cvAnimator"
             android:layout_width="match_parent"
-            android:layout_height="500dp" />
+            android:layout_height="300dp" />
+
+        <com.wk.mycustomview.widget.canvas.CanvasView
+            android:id="@+id/cvView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cv_scale="0.5" />
+
+        <com.wk.mycustomview.widget.animate.PointFView
+            android:id="@+id/pointF"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
 
         <com.wk.mycustomview.widget.text.MultiLineTextView
             android:layout_width="wrap_content"
@@ -25,28 +36,6 @@
         <com.wk.mycustomview.widget.text.SportView
             android:layout_width="match_parent"
             android:layout_height="305dp" />
-
-        <com.wk.mycustomview.widget.canvas.CanvasView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <com.wk.mycustomview.widget.canvas.CanvasView
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            app:cv_scale="0.5" />
-
-        <com.wk.mycustomview.widget.canvas.CanvasView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="30dp"
-            app:cv_scale="2" />
-
-        <com.wk.mycustomview.widget.canvas.CanvasView
-            android:id="@+id/cvView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="30dp"
-            app:cv_scale="1" />
 
         <com.wk.mycustomview.widget.DashboardView
             android:id="@+id/dashboardView"

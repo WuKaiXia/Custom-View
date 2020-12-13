@@ -25,7 +25,7 @@ class CircleView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
             field = value
             invalidate()
         }
-    var radius = 100f.px
+    var radius = 50f.px
         set(value) {
             field = value
             invalidate()

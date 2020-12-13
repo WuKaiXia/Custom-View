@@ -1,5 +1,7 @@
 package com.wk.mycustomview
 
+import android.animation.Animator
+import android.animation.ValueAnimator
 import android.content.res.Resources
 import android.util.TypedValue
 
@@ -10,3 +12,8 @@ val Float.px
             this,
             Resources.getSystem().displayMetrics
         )
+
+fun ValueAnimator.repeatMode() {
+    this.repeatMode = ValueAnimator.REVERSE
+    repeatCount = ValueAnimator.INFINITE
+}
