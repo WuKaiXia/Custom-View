@@ -13,6 +13,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <com.wk.mycustomview.widget.animate.CircleView
+            android:id="@+id/cvAnimator"
+            android:layout_width="match_parent"
+            android:layout_height="500dp" />
+
         <com.wk.mycustomview.widget.text.MultiLineTextView
             android:layout_width="wrap_content"
             android:layout_height="335dp" />
