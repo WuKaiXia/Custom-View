@@ -53,13 +53,11 @@ class CircleView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
         val radiusAnimator = ObjectAnimator.ofFloat(this, "radius", endValue)
         val colorAnimator =
             ObjectAnimator.ofArgb(this, "color", Color.RED, Color.GREEN, Color.YELLOW, color)
-        animator
         radiusAnimator?.let {
             it.duration = 1000
             it.repeatCount = INFINITE
             it.repeatMode = REVERSE
             it.setFloatValues(endValue)
-            it.start()
         }
 
         colorAnimator?.let {
@@ -67,8 +65,10 @@ class CircleView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
             it.repeatCount = INFINITE
             it.repeatMode = REVERSE
             it.setFloatValues(endValue)
-            it.start()
         }
+
+        animator?.playTogether(colorAnimator,radiusAnimator)
+        animator?.start()
     }
 
     override fun onDetachedFromWindow() {
