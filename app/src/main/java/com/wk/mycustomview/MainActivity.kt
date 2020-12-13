@@ -66,6 +66,8 @@ class MainActivity : AppCompatActivity() {
             repeatMode()
             start()
         }
+
+        provinceText.startAnimation()
     }
 
     fun animatorTest() {

@@ -16,7 +16,7 @@
         <com.wk.mycustomview.widget.animate.CircleView
             android:id="@+id/cvAnimator"
             android:layout_width="match_parent"
-            android:layout_height="300dp" />
+            android:layout_height="240dp" />
 
         <com.wk.mycustomview.widget.canvas.CanvasView
             android:id="@+id/cvView"
@@ -26,6 +26,11 @@
 
         <com.wk.mycustomview.widget.animate.PointFView
             android:id="@+id/pointF"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <com.wk.mycustomview.widget.animate.ProvinceView
+            android:id="@+id/provinceText"
             android:layout_width="match_parent"
             android:layout_height="50dp" />
 
