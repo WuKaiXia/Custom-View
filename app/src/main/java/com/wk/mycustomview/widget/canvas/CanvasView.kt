@@ -6,7 +6,6 @@ import android.graphics.drawable.BitmapDrawable
 import android.util.AttributeSet
 import android.view.View
 import com.wk.mycustomview.R
-import com.wk.mycustomview.utils.BitmapUtils
 
 class CanvasView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
 
@@ -15,8 +14,21 @@ class CanvasView(context: Context, attrs: AttributeSet?) : View(context, attrs) 
     private var mBitmap: Bitmap?
     private var mScale: Float
     var isCamera = false
-    private var degree = 30f
-    private var cameraDegree = 60f
+    var flipRotation = 0f
+        set(value) {
+            field = value
+            invalidate()
+        }
+    var bottomFlip = 0f
+        set(value) {
+            field = value
+            invalidate()
+        }
+    var topFlip = 0f
+        set(value) {
+            field = value
+            invalidate()
+        }
 
     init {
         val typedValue = context.obtainStyledAttributes(attrs, R.styleable.CanvasView)
@@ -36,11 +48,11 @@ class CanvasView(context: Context, attrs: AttributeSet?) : View(context, attrs) 
         val heightMode = MeasureSpec.getMode(heightMeasureSpec)
 
         if (heightMode == MeasureSpec.AT_MOST || heightMode == MeasureSpec.UNSPECIFIED) {
-            heightSize = (mBitmap?.height ?: 0)  + paddingBottom + paddingTop
+            heightSize = (mBitmap?.height ?: 0) + paddingBottom + paddingTop
         }
 
         if (widthMode == MeasureSpec.AT_MOST) {
-            widthSize = (mBitmap?.width ?: 0)  + paddingStart + paddingEnd
+            widthSize = (mBitmap?.width ?: 0) + paddingStart + paddingEnd
         }
 
         setMeasuredDimension(widthSize, heightSize)
@@ -68,9 +80,13 @@ class CanvasView(context: Context, attrs: AttributeSet?) : View(context, attrs) 
                 canvas.save()
                 canvas.scale(mScale, mScale)
                 canvas.translate(left + it.width / 2, top + it.height / 2)
-                canvas.rotate(-degree)
-                canvas.clipRect(-it.width, -it.height,it.width, 0)
-                canvas.rotate(degree)
+                canvas.rotate(-flipRotation)
+                mCamera.save()
+                mCamera.rotateX(topFlip)
+                mCamera.applyToCanvas(canvas)
+                mCamera.restore()
+                canvas.clipRect(-it.width, -it.height, it.width, 0)
+                canvas.rotate(flipRotation)
                 canvas.translate(
                     -(left + it.width / 2),
                     -(top + it.height / 2)
@@ -81,21 +97,20 @@ class CanvasView(context: Context, attrs: AttributeSet?) : View(context, attrs) 
 
 
                 canvas.save()
-                mCamera.save()
                 canvas.scale(mScale, mScale)
                 canvas.translate(left + it.width / 2, top + it.height / 2)
-                canvas.rotate(-degree)
-                mCamera.rotateX(cameraDegree)
+                canvas.rotate(-flipRotation)
+                mCamera.save()
+                mCamera.rotateX(bottomFlip)
                 mCamera.applyToCanvas(canvas)
-                canvas.clipRect(-it.width, 0,it.width, it.height)
-                canvas.rotate(degree)
+                mCamera.restore()
+                canvas.clipRect(-it.width, 0, it.width, it.height)
+                canvas.rotate(flipRotation)
                 canvas.translate(
                     -(left + it.width / 2),
                     -(top + it.height / 2)
                 )
-
                 canvas.drawBitmap(it, left, top, mPaint)
-                mCamera.restore()
                 canvas.restore()
             }
 

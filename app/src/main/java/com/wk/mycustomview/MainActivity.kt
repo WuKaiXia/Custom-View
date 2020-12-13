@@ -1,5 +1,9 @@
 package com.wk.mycustomview
 
+import android.animation.Animator
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +21,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        findViewById<CanvasView>(R.id.cvView).isCamera = true
+        findViewById<CanvasView>(R.id.cvView).run {
+            isCamera = true
+            val animator = ObjectAnimator.ofFloat(this, "flipRotation", 360f)
+
+            val topAnimator = ObjectAnimator.ofFloat(this, "topFlip", -60f)
+
+            val bottomAnimator = ObjectAnimator.ofFloat(this, "bottomFlip", 60f)
+
+            val animatorSet = AnimatorSet()
+            animatorSet.playSequentially(bottomAnimator, animator, topAnimator)
+            animatorSet.startDelay = 2000
+            animatorSet.duration = 2000
+            animatorSet.start()
+        }
         val pieView = findViewById<AvatarView>(R.id.pieView)
         findViewById<TextView>(R.id.tvSwitchPie).setOnClickListener {
             startActivity(Intent(this, XfermodeActivity::class.java))
