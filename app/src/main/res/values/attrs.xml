@@ -13,4 +13,9 @@
         <attr name="cv_src" format="reference" />
         <attr name="cv_scale" format="float" />
     </declare-styleable>
+    <declare-styleable name="MaterialEditText">
+        <attr name="useFloatingLabel" format="boolean" />
+        <attr name="floatingLabelSize" format="dimension" />
+        <attr name="floatingLabelMargin" format="dimension" />
+    </declare-styleable>
 </resources>

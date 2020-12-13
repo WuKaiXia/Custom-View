@@ -13,6 +13,17 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <com.wk.mycustomview.widget.text.MaterialEditText
+            android:id="@+id/met"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:hint="User Name"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textSize="15sp" />
+
         <com.wk.mycustomview.widget.animate.CircleView
             android:id="@+id/cvAnimator"
             android:layout_width="match_parent"
