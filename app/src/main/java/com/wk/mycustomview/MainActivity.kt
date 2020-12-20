@@ -68,6 +68,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         provinceText.startAnimation()
+
+        cvAnimator.setOnClickListener {
+            startActivity(Intent(this, TagLayoutActivity::class.java))
+        }
     }
 
     fun animatorTest() {
