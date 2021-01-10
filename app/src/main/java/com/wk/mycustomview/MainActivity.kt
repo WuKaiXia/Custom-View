@@ -10,8 +10,12 @@ import android.graphics.PointF
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.ViewParent
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.core.animation.doOnRepeat
+import com.wk.mycustomview.utils.DialogUtils
 import com.wk.mycustomview.widget.AvatarView
 import com.wk.mycustomview.widget.PieView
 import com.wk.mycustomview.widget.animate.AnimateUtil
@@ -19,8 +23,14 @@ import com.wk.mycustomview.widget.animate.CircleView
 import com.wk.mycustomview.widget.animate.PointFEvaluator
 import com.wk.mycustomview.widget.canvas.CanvasView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.concurrent.thread
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
+    private val dialog by lazy { AlertDialog.Builder(this)
+        .setTitle("This is test")
+        .setMessage("hello every one")
+        .create() }
     private var id = R.drawable.bg_rain
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,19 +50,15 @@ class MainActivity : AppCompatActivity() {
             animatorSet.start()
         }
         val pieView = findViewById<AvatarView>(R.id.pieView)
+
         findViewById<TextView>(R.id.tvSwitchPie).setOnClickListener {
-            startActivity(Intent(this, XfermodeActivity::class.java))
-//            pieView.switchPie()
-            id = if (id == R.drawable.bg_rain) {
-                R.drawable.test
-            } else {
-                R.drawable.bg_rain
-            }
-            pieView.setSrc(id)
+            DialogUtils.getDialogRootView(this)
         }
 
         AnimateUtil.startAnimate(pieView)
         pieView.setOnClickListener {
+            dialog.show()
+            DialogUtils.getDialogRootView(this)
             Log.e(this::class.java.simpleName, "pie View")
         }
 
@@ -70,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         provinceText.startAnimation()
 
         cvAnimator.setOnClickListener {
-            startActivity(Intent(this, TagLayoutActivity::class.java))
+            startActivity(Intent(this, ScalableImageActivity::class.java))
         }
     }
 

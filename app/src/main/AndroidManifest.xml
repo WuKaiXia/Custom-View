@@ -3,13 +3,15 @@
     package="com.wk.mycustomview">
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyCustomView">
-        <activity android:name=".TagLayoutActivity"></activity>
+        <activity android:name=".ScalableImageActivity"></activity>
+        <activity android:name=".TagLayoutActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
