@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyCustomView">
-        <activity android:name=".ActivityMultiTouch"></activity>
+        <activity android:name=".ActivityViewGroup"></activity>
+        <activity android:name=".ActivityMultiTouch" />
         <activity android:name=".ScalableImageActivity" />
         <activity android:name=".TagLayoutActivity" />
         <activity android:name=".MainActivity">

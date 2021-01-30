@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         provinceText.startAnimation()
 
         cvAnimator.setOnClickListener {
-            startActivity(Intent(this, ScalableImageActivity::class.java))
+            startActivity(Intent(this, ActivityViewGroup::class.java))
         }
     }
 

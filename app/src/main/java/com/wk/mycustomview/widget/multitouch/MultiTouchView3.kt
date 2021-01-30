@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
 import android.util.AttributeSet
+import android.util.Log
 import android.util.SparseArray
 import android.view.MotionEvent
 import android.view.View
@@ -28,6 +29,7 @@ class MultiTouchView3(context: Context?, attrs: AttributeSet?) : View(context, a
   }
 
   override fun onTouchEvent(event: MotionEvent): Boolean {
+    Log.e("onTouchEvent", "pointerCount::${event.pointerCount} size::${sparseArray.size()} ${event.actionMasked}")
     when (event.actionMasked) {
       MotionEvent.ACTION_DOWN, MotionEvent.ACTION_POINTER_DOWN -> {
         val actionIndex = event.actionIndex
@@ -49,6 +51,10 @@ class MultiTouchView3(context: Context?, attrs: AttributeSet?) : View(context, a
         val actionIndex = event.actionIndex
         val pointerId = event.getPointerId(actionIndex)
         sparseArray.remove(pointerId)
+        invalidate()
+      }
+      MotionEvent.ACTION_CANCEL -> {
+        sparseArray.clear()
         invalidate()
       }
     }
